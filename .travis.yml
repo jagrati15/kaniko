@@ -10,20 +10,40 @@ go:
 go_import_path: github.com/GoogleContainerTools/kaniko
 jobs:
   include:
-    - name: unit-test
+    - arch: amd64
+      name: unit-test
       script:
         - make test
-    - name: integration-test-run
+    - arch: arm64
+      name: unit-test
+      script:
+        - make test    
+    - arch: amd64
+      name: integration-test-run
       before_install:
         - make travis-setup
       script:
         - make integration-test-run
-    - name: integration-test-layers
+    - arch: arm64
+      name: integration-test-run
+      before_install:
+        - make travis-setup
+      script:
+        - make integration-test-run    
+    - arch: amd64
+      name: integration-test-layers
       before_install:
         - make travis-setup
       script:
         - make integration-test-layers
-    - name: build-image-and-k8s-integration-test
+    - arch: arm64
+      name: integration-test-layers
+      before_install:
+        - make travis-setup
+      script:
+        - make integration-test-layers    
+    - arch: amd64
+      name: build-image-and-k8s-integration-test
       before_install:
         - make travis-setup
         - make minikube-setup
@@ -31,11 +51,27 @@ jobs:
         - make images
         - make push
         - make integration-test-k8s
-    - name: integration-test-misc
+     arch: arm64
+      name: build-image-and-k8s-integration-test
+      before_install:
+        - make travis-setup
+        - make minikube-setup
+      script:
+        - make images
+        - make push
+        - make integration-test-k8s    
+    - arch: amd64
+      name: integration-test-misc
       before_install:
         - make travis-setup
       script:
         - make integration-test-misc
+    - arch: arm64
+      name: integration-test-misc
+      before_install:
+        - make travis-setup
+      script:
+        - make integration-test-misc    
 
     - name: bazel amd64
       arch: amd64
