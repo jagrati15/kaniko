@@ -40,7 +40,10 @@ jobs:
         - make travis-setup
       script:
         - make integration-test-layers
-    - arch: arm64
+    - dist: focal
+      virt: vm
+      group: edge
+      arch: arm64-graviton2
       name: integration-test-layers
       before_install:
         - make travis-setup
