@@ -49,23 +49,23 @@ fi
 sudo apt-get update
 sudo apt-get install -y liblz4-tool
 
-if [ "$(uname -m)" == "aarch64" ]
-then
-	sudo rm -rf /etc/apt/sources.list
-	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ focal main restricted universe multiverse"
-	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ focal-updates main restricted universe multiverse"
-	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ focal-backports main restricted universe multiverse"
-	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ focal-security main restricted universe multiverse"
-	sudo apt-get update
-	sudo apt-get install linux-headers-`uname -r`
-	sudo apt-get install --reinstall linux-image-`uname -r`
-	sudo apt-get install socat
-	mkdir -p /etc/systemd/system/docker.service.d
-	sudo systemctl daemon-reload
-	sudo systemctl restart docker
-	sudo swapoff -a
+#if [ "$(uname -m)" == "aarch64" ]
+#then
+#	sudo rm -rf /etc/apt/sources.list
+#	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ focal main restricted universe multiverse"
+#	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ focal-updates main restricted universe multiverse"
+#	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ focal-backports main restricted universe multiverse"
+#	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ focal-security main restricted universe multiverse"
+#	sudo apt-get update
+#	sudo apt-get install linux-headers-`uname -r`
+#	sudo apt-get install --reinstall linux-image-`uname -r`
+#	sudo apt-get install socat
+#	mkdir -p /etc/systemd/system/docker.service.d
+#	sudo systemctl daemon-reload
+#	sudo systemctl restart docker
+#	sudo swapoff -a
 	#sudo systemctl start kubelet
-fi
+#fi
 sudo minikube start --vm-driver=none
 sudo minikube status
 sudo chown -R $USER $HOME/.kube $HOME/.minikube
