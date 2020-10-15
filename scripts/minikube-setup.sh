@@ -52,10 +52,10 @@ sudo apt-get install -y liblz4-tool
 if [ "$(uname -m)" == "aarch64" ]
 then
 	sudo rm -rf /etc/apt/sources.list
-	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ bionic main restricted universe multiverse"
-	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ bionic-updates main restricted universe multiverse"
-	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ bionic-backports main restricted universe multiverse"
-	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ bionic-security main restricted universe multiverse"
+	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ focal main restricted universe multiverse"
+	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ focal-updates main restricted universe multiverse"
+	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ focal-backports main restricted universe multiverse"
+	sudo add-apt-repository "deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ focal-security main restricted universe multiverse"
 	sudo apt-get update
 	sudo apt-get install linux-headers-`uname -r`
 	sudo apt-get install --reinstall linux-image-`uname -r`
