@@ -64,7 +64,7 @@ then
 	sudo systemctl daemon-reload
 	sudo systemctl restart docker
 	sudo swapoff -a
-	sudo systemctl start kubelet
+	#sudo systemctl start kubelet
 fi
 sudo minikube start --vm-driver=none
 sudo minikube status
